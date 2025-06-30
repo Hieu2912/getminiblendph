@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini Fresh Blender</title>
+  <style>
+    /* --- Toàn bộ CSS từ phần sản phẩm --- */
+    @keyframes bounce {
+      0%   { transform: translateY(0); }
+      20%  { transform: translateY(-10px); }
+      40%  { transform: translateY(0); }
+      60%  { transform: translateY(-6px); }
+      80%  { transform: translateY(0); }
+      100% { transform: translateY(-3px); }
+    }
+    @keyframes vibrate {
+      0% { transform: translate(0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(-1px, -1px); }
+      60% { transform: translate(1px, 1px); }
+      80% { transform: translate(1px, -1px); }
+      100% { transform: translate(0); }
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fdfdfd;
+    }
+    .box {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .title { font-size: 24px; font-weight: bold; }
+    .sub { font-size: 16px; color: #666; margin-bottom: 10px; }
+    .rating { color: #f7b500; font-weight: bold; margin: 8px 0; }
+    .meta { font-size: 14px; color: #333; margin-bottom: 15px; }
+    .hot-deal { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .discount-label {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: #fff; padding: 6px 14px;
+      border-radius: 30px; font-weight: bold; font-size: 14px;
+    }
+    .price { font-size: 36px; font-weight: bold; color: #111; animation: bounce 1.2s infinite; }
+    .old { font-size: 18px; color: #aaa; text-decoration: line-through; }
+    .gift-deal {
+      margin-top: 20px;
+      background: linear-gradient(to right, #9333ea, #f43f5e);
+      color: #fff; padding: 12px 24px; border-radius: 12px;
+      display: inline-block; font-weight: bold; font-size: 15px;
+      animation: vibrate 0.4s infinite; box-shadow: 0 0 12px rgba(255, 94, 77, 0.4); cursor: pointer;
+    }
+    .promo-box {
+      border: 3px solid #d9534f; background-color: #fff3b0;
+      padding: 15px; max-width: 400px; text-align: center; margin: 20px auto;
+    }
+    .promo-box .limited {
+      font-weight: bold; font-size: 16px;
+      text-transform: uppercase; color: #000;
+    }
+    .promo-box .before-price {
+      font-size: 18px; margin: 10px 0; color: #000;
+    }
+    .promo-box .before-price del {
+      color: black; font-weight: bold;
+    }
+    .promo-box .now-price {
+      font-size: 22px; color: black; margin: 10px 0;
+    }
+    .promo-box .blinking-price {
+      color: red; font-size: 28px; font-weight: bold;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .order-form {
+      background: #f0f0f0;
+      padding: 20px;
+      max-width: 400px;
+      margin: 20px auto;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .order-form h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #a00;
+    }
+    .order-form input[type="text"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px auto;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      display: block;
+    }
+    .combo-options {
+      background: #fff9e6;
+      padding: 10px 15px;
+      border-radius: 6px;
+      text-align: left;
+      margin: 10px auto;
+      width: 90%;
+    }
+    .combo-options label {
+      display: block;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    .order-button {
+      margin-top: 20px;
+    }
+    .order-button .note {
+      font-size: 13px;
+      color: #a00;
+      animation: fadeText 2s infinite;
+    }
+    @keyframes fadeText {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+    .order-button .order-now {
+      margin-top: 8px;
+      display: inline-block;
+      background: linear-gradient(to right, #ff3c3c, #ff6600);
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+      padding: 12px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: zoomPulse 1.5s infinite;
+      border: none;
+    }
+    @keyframes zoomPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="title">Mini Fresh Blender</div>
+    <div class="sub">Best Seller of the Week</div>
+    <div class="rating">★★★★☆ 4.9 Rating</div>
+    <div class="meta">5650 Reviews • 21,632 Sold • 800 People Viewing</div>
+    <div class="hot-deal">
+      <div class="discount-label">SALE 40%</div>
+      <div class="price">799 PHP</div>
+      <div class="old">1,330 PHP</div>
+    </div>
+    <div class="gift-deal" onclick="document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });">
+      🎁 Special: Buy 1 Get 1 Free Fruit Peeler!
+    </div>
+  </div>
+
+  <div class="promo-box">
+    <div class="limited">LIMITED TIME OFFER – TODAY ONLY!</div>
+    <div class="before-price">BEFORE PRICE: <del>₱1,330</del></div>
+    <div class="now-price">Buy Now For: <span class="blinking-price">₱799</span></div>
+    <div class="note">Free Shipping Nationwide Cash On Delivery</div>
+  </div>
+
+  <form id="orderForm" class="order-form">
+    <h3>COMPLETE FORM TO ORDER</h3>
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="text" name="Phone" placeholder="Phone Number" required>
+    <input type="text" name="Address" placeholder="Address" required>
+    <h3>CHOOSE YOUR COMBO HERE</h3>
+    <div class="combo-options">
+      <label><input type="radio" name="Combo" value="Buy 1 get 1 free peeler ₱799" checked> ✅ Buy 1 get 1 free peeler ₱799</label>
+      <label><input type="radio" name="Combo" value="Buy 1, Take 1 – ₱1199"> ✅ Buy 1, Take 1 – ₱1199</label>
+    </div>
+    <div class="order-button">
+      <div class="note">Click here to submit your order</div>
+      <button type="submit" class="order-now">ORDER NOW</button>
+    </div>
+  </form>
+
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        Name: form.Name.value,
+        Phone: form.Phone.value,
+        Address: form.Address.value,
+        Combo: form.Combo.value
+      };
+      fetch("https://api.sheetbest.com/sheets/5b69204a-9d0c-4f9d-802f-08468540fc78", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(res => {
+        alert("🎉 Your order has been submitted successfully!");
+        form.reset();
+      })
+      .catch(error => {
+        alert("⚠️ There was an error submitting your order. Please try again.");
+        console.error(error);
+      });
+    });
+  </script>
+</body>
+</html>
